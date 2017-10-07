@@ -19,42 +19,42 @@ void loop() {
   int f2 = analogRead(A1);
   int f3 = analogRead(A2);
   int f4 = analogRead(A3);
-  if(f1 >200 && f2 > 300 && f3 > 300 && f4 > 200){
-    
+  if (f1 > 200 && f2 > 300 && f3 > 300 && f4 > 200) {
+
   }
-  if(f1 > 200 && f2 > 300){
+  if (f1 > 200 && f2 > 300) {
     finger12();
   }
-  else if(f1 > 200 && f3 > 300){
+  else if (f1 > 200 && f3 > 300) {
     finger13();
   }
-  else if(f1 > 200 && f4 > 200){
+  else if (f1 > 200 && f4 > 200) {
     finger14();
   }
-  else if(f2 > 300 && f3 > 300){
+  else if (f2 > 300 && f3 > 300) {
     finger23();
   }
-  else if(f2 > 300 && f4 > 200){
+  else if (f2 > 300 && f4 > 200) {
     finger24();
   }
-  else if(f3 > 300 && f4 > 200){
+  else if (f3 > 300 && f4 > 200) {
     finger34();
   }
   else if (f1 > 200) { //If the pressure detected at finger 0 was more than 300, perform the mentioned task
     Serial.println(f1);  //Print the value received on the Serial Monitor
     finger1();
-     return;
+    return;
   }
   else if (f2 > 300) {
     Serial.println(f2);
     finger2();
-     return;
+    return;
   }
   else if (f3 > 300) {
     Serial.print("Victory");
     Serial.println(f3);
     finger3();
-     return;
+    return;
   }
   else if (f4 > 200) {
     Serial.println(f4);
@@ -65,7 +65,7 @@ void loop() {
   }
 }
 
-void closeHand(){
+void closeHand() {
   finger1();
   finger2();
   finger3();
@@ -106,7 +106,7 @@ void finger4() {
   finger5(); // Hack for now since 4th finger isn't getting detected
 }
 
-void finger5(){
+void finger5() {
   myservo9.write(180);
 }
 
