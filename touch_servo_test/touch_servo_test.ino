@@ -3,7 +3,7 @@
 Servo myservo7, myservo8, myservo9, myservo10, myservo11; // create servo object to control a servo
 // twelve servo objects can be created on most boards
 int pos = 0;    // variable to store the servo position
-
+int thresh1 = 150, thresh2 = 150, thresh3 = 150, thresh4 = 150;
 void setup() {
   Serial.begin(9600);
   myservo7.attach(5);  //Attach the servos to digital pins
@@ -19,48 +19,48 @@ void loop() {
   int f2 = analogRead(A1);
   int f3 = analogRead(A2);
   int f4 = analogRead(A3);
-  if (f1 > 200 && f2 > 300 && f3 > 300 && f4 > 200) {
+  if (f1 > thresh1 && f2 > thresh2 && f3 > thresh3 && f4 > thresh4) {
 
   }
-  if (f1 > 200 && f2 > 300) {
+  if (f1 > thresh1 && f2 > thresh2) {
     finger12();
   }
-  else if (f1 > 200 && f3 > 300) {
+  else if (f1 > thresh1 && f3 > thresh3) {
     finger13();
   }
-  else if (f1 > 200 && f4 > 200) {
+  else if (f1 > thresh1 && f4 > thresh4) {
     finger14();
   }
-  else if (f2 > 300 && f3 > 300) {
+  else if (f2 > thresh2 && f3 > thresh3) {
     finger23();
   }
-  else if (f2 > 300 && f4 > 200) {
+  else if (f2 > thresh2 && f4 > thresh4) {
     finger24();
   }
-  else if (f3 > 300 && f4 > 200) {
+  else if (f3 > thresh3 && f4 > thresh4) {
     finger34();
   }
-  else if (f1 > 200) { //If the pressure detected at finger 0 was more than 300, perform the mentioned task
+  else if (f1 > thresh1) { //If the pressure detected at finger 0 was more than 300, perform the mentioned task
     Serial.println(f1);  //Print the value received on the Serial Monitor
     finger1();
     return;
   }
-  else if (f2 > 300) {
+  else if (f2 > thresh2) {
     Serial.println(f2);
     finger2();
     return;
   }
-  else if (f3 > 300) {
+  else if (f3 > thresh3) {
     Serial.print("Victory");
     Serial.println(f3);
     finger3();
     return;
   }
-  else if (f4 > 200) {
+  else if (f4 > thresh4) {
     Serial.println(f4);
     finger4();
   }
-  else if (f1 < 300 && f2 < 300 && f3 < 300 && f4 < 200) {
+  else if (f1 < thresh1 && f2 < thresh2 && f3 < thresh3 && f4 < thresh4) {
     openHand();
   }
 }
